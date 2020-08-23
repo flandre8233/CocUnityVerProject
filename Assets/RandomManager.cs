@@ -1,28 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RandomManager : MonoBehaviour
+public class RandomManager : SingletonMonoBehavior<RandomManager>
 {
-    public static RandomManager Intance;
+    [SerializeField]
+    Button RandomButton;
+    [SerializeField]
+    public Text OutPutResult;
+    public int ActiveRandomNumber;
 
-    void Awake()
+    public float ProgressTime;
+    public int RandomTimes;
+
+    public void UpdateRandomTimes(int Val)
     {
-        if (Intance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Intance = this;
+        RandomTimes = Val + 1;
     }
 
-    [SerializeField]
-    Text OutPutResult;
-    public int ActiveRandomNumber;
+    private void Start()
+    {
+        RandomButton.interactable = false;
+        OutPutResult.text = "";
+    }
+
+    void ResetButton()
+    {
+        RandomButton.interactable = true;
+    }
 
     public void OnClickRandomButton()
     {
+        Invoke("OutPutTextAni", 0);
+        Invoke("ResetButton", ProgressTime);
+
+        RandomButton.interactable = false;
         switch (ActiveRandomNumber)
         {
             case 3:
@@ -31,61 +45,135 @@ public class RandomManager : MonoBehaviour
             case 4:
                 OnClickDice4Button();
                 break;
+            case 6:
+                OnClickDice6Button();
+                break;
             case 10:
                 OnClickDice10Button();
+                break;
+            case 20:
+                OnClickDice20Button();
                 break;
             case 100:
                 OnClickDice100Button();
                 break;
-            case 6:
-                OnClickDice6Button();
-                break;
-       
         }
     }
 
-    public void OnClickDice3Button()
+    private void OnClickDice3Button()
     {
-        OutPutResult.text = "1D3 Result : " + Dice3().ToString();
+        Invoke("DisPlayDice3Result", ProgressTime);
     }
 
-    public void OnClickDice4Button()
+    private void OnClickDice4Button()
     {
-        OutPutResult.text = "1D4 Result : " + Dice4().ToString();
+        Invoke("DisPlayDice4Result", ProgressTime);
+
     }
 
-    public void OnClickDice6Button()
+    private void OnClickDice6Button()
     {
-        OutPutResult.text = "1D6 Result : " + Dice6().ToString();
-    }
-    public void OnClickDice10Button()
-    {
-        OutPutResult.text = "1D10 Result : " + Dice10().ToString();
-    }
-    public void OnClickDice100Button()
-    {
-        OutPutResult.text = "1D100 Result : " + Dice100().ToString();
+        Invoke("DisPlayDice6Result", ProgressTime);
     }
 
-    public int Dice3()
+    private void OnClickDice10Button()
     {
-        return Random.Range(0, 3) + 1;
+        Invoke("DisPlayDice10Result", ProgressTime);
     }
-    public int Dice4()
+    private void OnClickDice20Button()
     {
-        return Random.Range(0,4) + 1;
-       
+        Invoke("DisPlayDice20Result", ProgressTime);
     }
-    public int Dice6()
+
+    private void OnClickDice100Button()
     {
-        return Random.Range(0, 6) + 1;
+        Invoke("DisPlayDice100Result", ProgressTime);
     }
-    public int Dice10()
+
+    public void DisPlayDice3Result()
     {
-        return Random.Range(0, 10) + 1;
+        OutPutResult.text = RandomTimes + "D3 Result : ";
+        int DicesResult = 0;
+        for (int i = 0; i < RandomTimes; i++)
+        {
+            int Dice = DiceMath.Dice3();
+            DicesResult += Dice;
+            OutPutResult.text += Dice + "  ";
+        }
+
+        OutPutResult.text +=  " = " + DicesResult;
     }
-    public int Dice100()
+
+    public void DisPlayDice4Result()
     {
-        return ( (Dice10() - 1) * 10 + (Dice10() - 1 ) ) + 1 ;
+        OutPutResult.text = RandomTimes + "D4 Result : ";
+        int DicesResult = 0;
+        for (int i = 0; i < RandomTimes; i++)
+        {
+            int Dice = DiceMath.Dice4();
+            DicesResult += Dice;
+            OutPutResult.text += Dice + "  ";
+        }
+
+        OutPutResult.text += " = " + DicesResult;
     }
+
+    public void DisPlayDice6Result()
+    {
+        OutPutResult.text = RandomTimes + "D6 Result : ";
+        int DicesResult = 0;
+        for (int i = 0; i < RandomTimes; i++)
+        {
+            int Dice = DiceMath.Dice6();
+            DicesResult += Dice;
+            OutPutResult.text += Dice + "  ";
+        }
+
+        OutPutResult.text += " = " + DicesResult;
+    }
+    public void DisPlayDice10Result()
+    {
+        OutPutResult.text = RandomTimes + "D10 Result : ";
+        int DicesResult = 0;
+        for (int i = 0; i < RandomTimes; i++)
+        {
+            int Dice = DiceMath.Dice10();
+            DicesResult += Dice;
+            OutPutResult.text += Dice + "  ";
+        }
+
+        OutPutResult.text += " = " + DicesResult;
+    }
+    public void DisPlayDice20Result()
+    {
+        OutPutResult.text = RandomTimes + "D20 Result : ";
+        int DicesResult = 0;
+        for (int i = 0; i < RandomTimes; i++)
+        {
+            int Dice = DiceMath.Dice20();
+            DicesResult += Dice;
+            OutPutResult.text += Dice + "  ";
+        }
+
+        OutPutResult.text += " = " + DicesResult;
+    }
+    public void DisPlayDice100Result()
+    {
+        OutPutResult.text = RandomTimes + "D100 Result : ";
+        int DicesResult = 0;
+        for (int i = 0; i < RandomTimes; i++)
+        {
+            int Dice = DiceMath.Dice100();
+            DicesResult += Dice;
+            OutPutResult.text += Dice + "  ";
+        }
+
+        OutPutResult.text += " = " + DicesResult;
+    }
+
+    public void OutPutTextAni()
+    {
+        OutPutResult.text = "Processing......";
+    }
+
 }
