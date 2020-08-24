@@ -13,4 +13,12 @@ public class RandomNumChooseToggleGroupControll : SingletonMonoBehavior<RandomNu
             togglesControll[i].UpdateName();
         }
     }
+
+    public void CaneclSelection()
+    {
+        for (int i = 0; i < togglesControll.Length; i++)
+        {
+            togglesControll[i].GetComponent<Toggle>().isOn = false;
+        }
+    }
 }

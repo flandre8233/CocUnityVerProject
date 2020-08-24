@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class RewardPunishmentControll : SingletonMonoBehavior<RewardPunishmentControll>
 {
-
     [SerializeField]
     Button[] RandomButton;
 
