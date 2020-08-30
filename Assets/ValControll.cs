@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ValControll : MonoBehaviour
 {
     public ValRandomBase motherBase;
+    public int RandomType;
 
     public int NumberVal;
     Text ViewText;
@@ -14,16 +15,30 @@ public class ValControll : MonoBehaviour
         StartRandom();
     }
 
-    public void StartRandom()
+    public void StartRandom( )
     {
-        int Dice1 = DiceMath.Dice6();
-        int Dice2 = DiceMath.Dice6();
-        int Dice3 = DiceMath.Dice6();
+        switch (RandomType)
+        {
+            case 1: // 3D6
+                int Dice1 = DiceMath.Dice6();
+                int Dice2 = DiceMath.Dice6();
+                int Dice3 = DiceMath.Dice6();
 
-        NumberVal = Dice1 + Dice2 + Dice3;
-        NumberVal *= 5;
+                NumberVal = Dice1 + Dice2 + Dice3;
+                NumberVal *= 5;
 
-        print(Dice1 + "  " + Dice2 + "  " + Dice3 );
+                break;
+            case 2: // 2D6 + 6
+                int Dice4 = DiceMath.Dice6();
+                int Dice5 = DiceMath.Dice6();
+
+                NumberVal = Dice4 + Dice5 + 6;
+                NumberVal *= 5;
+                break;
+            default:
+                break;
+        }
+
         ViewText.text = NumberVal.ToString();
     }
 }

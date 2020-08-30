@@ -17,6 +17,10 @@ public class SceneChanger
     {
         SceneManager.LoadScene("Dice");
     }
+    public static void ToCreateChar()
+    {
+        SceneManager.LoadScene("CreateChar");
+    }
 
 
 }

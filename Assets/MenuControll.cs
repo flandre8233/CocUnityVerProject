@@ -12,4 +12,8 @@ public class MenuControll : SingletonMonoBehavior<MenuControll>
     {
         SceneChanger.ToConFrontation();
     }
+    public void ToCreateCharScene()
+    {
+        SceneChanger.ToCreateChar();
+    }
 }

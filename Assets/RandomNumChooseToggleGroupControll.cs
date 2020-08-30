@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class RandomNumChooseToggleGroupControll : SingletonMonoBehavior<RandomNumChooseToggleGroupControll>
 {
+ 
+
     [SerializeField]
     RandomToggleControll[] togglesControll;
     public void ChangeName()

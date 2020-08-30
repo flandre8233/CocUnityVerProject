@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PropertyValBox : MonoBehaviour , IDropHandler
+public class PropertyValBox : MonoBehaviour 
 {
     public PropertyBoxControll propertyBoxControll;
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(GameObject DataObj)
     {
-        if (propertyBoxControll.value <= 0 && eventData.pointerDrag != null)
+        if (DataObj != null)
         {
-            eventData.pointerDrag.GetComponent<RectTransform>().parent = transform;
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =  new Vector2();
-            propertyBoxControll.OnValueChanged(eventData.pointerDrag.GetComponent<ValControll>().NumberVal);
+            DataObj.GetComponent<RectTransform>().parent = transform;
+            DataObj.GetComponent<RectTransform>().anchoredPosition =  new Vector2();
+            propertyBoxControll.OnValueChanged(DataObj.GetComponent<ValControll>().NumberVal);
         }
     }
 

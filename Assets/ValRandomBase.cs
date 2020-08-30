@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ValRandomBase : MonoBehaviour
 {
+    public int RandomType;
+
     [SerializeField]
     GameObject NumberPrefab;
     GameObject SpawnObj;
@@ -17,6 +19,7 @@ public class ValRandomBase : MonoBehaviour
     {
         SpawnObj = Instantiate(NumberPrefab);
         SpawnObj.GetComponent<ValControll>().motherBase = this;
+        SpawnObj.GetComponent<ValControll>().RandomType = RandomType;
         SpawnObj.GetComponent<DragDrop>().ResetPos();
     }
 

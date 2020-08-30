@@ -21,7 +21,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
+      
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -43,6 +43,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (eventData.pointerEnter != null && eventData.pointerEnter.GetComponent<PropertyValBox>())
         {
             propertyBoxVal = eventData.pointerEnter.GetComponent<PropertyValBox>();
+            propertyBoxVal.OnDrop(gameObject);
         }
         else
         {

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ConFrontation.unity
     guid: a56697bba8719964aa9090feeb3a2511
+  - enabled: 1
+    path: Assets/Scenes/CreateChar.unity
+    guid: f4f3c8e041c59a34892937d7861eef8d
   m_configObjects: {}
