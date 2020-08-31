@@ -6,8 +6,17 @@ using UnityEngine.UI;
 
 public class RewardPunishmentControll : SingletonMonoBehavior<RewardPunishmentControll>
 {
+    public InputField inputField;
+
+    public int ExtraDiceTime {
+        get {
+            return int.Parse(inputField.text);
+        }
+    }
+
     [SerializeField]
     Button[] RandomButton;
+
 
     public void OnClickRewardButton()
     {
@@ -44,31 +53,50 @@ public class RewardPunishmentControll : SingletonMonoBehavior<RewardPunishmentCo
     {
         RandomManager.instance.OutPutResult.text = "Result : ";
         List<int> Dices = new List<int>();
-        Dices.Add(DiceMath.Dice10());
-        Dices.Add(DiceMath.Dice10());
-        Dices.Add(DiceMath.Dice10());
-
-        RandomManager.instance.OutPutResult.text += Dices[0] + "  ";
-        RandomManager.instance.OutPutResult.text += Dices[1] + "  ";
-        RandomManager.instance.OutPutResult.text += Dices[2] + "  ";
+        for (int i = 0; i < 2 + ExtraDiceTime; i++)
+        {
+            Dices.Add(DiceMath.Dice10());
+            RandomManager.instance.OutPutResult.text += Dices[i] + "  ";
+        }
+    
         Dices.Sort();
-        RandomManager.instance.OutPutResult.text += " Best Result : " + Dices[0] + "  " + Dices[1] + " = " + DiceMath.Dice100Counting(Dices[0],Dices[1]);
+        if (Dices.Count > 2 && Dices.Where(x => x == 0).ToList().Count >= 2)
+        {
+            for (int i = 1; i < Dices.Count; i++)
+            {
+                if (Dices[i] == 0)
+                {
+                    Dices.RemoveAt(i);
+                }
+            }
+        }
+
+        RandomManager.instance.OutPutResult.text += " Best Result : ";
+        RandomManager.instance.OutPutResult.text += Dices[0] + "  " + Dices[1] + "  ";
+        RandomManager.instance.OutPutResult.text += " = " + DiceMath.Dice100Counting(Dices[0],Dices[1]);
     }
 
     public void DisPlayDicePunishmentResult()
     {
         RandomManager.instance.OutPutResult.text = "Result : ";
         List<int> Dices = new List<int>();
-        Dices.Add(DiceMath.Dice10());
-        Dices.Add(DiceMath.Dice10());
-        Dices.Add(DiceMath.Dice10());
 
-        RandomManager.instance.OutPutResult.text += Dices[0] + "  ";
-        RandomManager.instance.OutPutResult.text += Dices[1] + "  ";
-        RandomManager.instance.OutPutResult.text += Dices[2] + "  ";
+        for (int i = 0; i < 2 + ExtraDiceTime; i++)
+        {
+            Dices.Add(DiceMath.Dice10());
+            RandomManager.instance.OutPutResult.text += Dices[i] + "  ";
+        }
+
         Dices.Sort();
-        Dices.Reverse();
-        RandomManager.instance.OutPutResult.text += " Worst Result : " + Dices[0] + "  " + Dices[1] + " = " + DiceMath.Dice100Counting(Dices[0], Dices[1]);
+
+        if (! (Dices.Count >= 2 && Dices.Where(x => x == 0).ToList().Count >= 2 ) )
+        {
+            Dices.Reverse();
+        }
+
+        RandomManager.instance.OutPutResult.text += " Worst Result : ";
+        RandomManager.instance.OutPutResult.text += Dices[0] + "  " + Dices[1] + "  ";
+        RandomManager.instance.OutPutResult.text += " = " + DiceMath.Dice100Counting(Dices[0], Dices[1]);
     }
 
 }

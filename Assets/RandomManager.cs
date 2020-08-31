@@ -35,8 +35,8 @@ public class RandomManager : SingletonMonoBehavior<RandomManager>
     {
         Invoke("OutPutTextAni", 0);
         Invoke("ResetButton", ProgressTime);
-
         RandomButton.interactable = false;
+
         switch (ActiveRandomNumber)
         {
             case 3:
@@ -58,6 +58,7 @@ public class RandomManager : SingletonMonoBehavior<RandomManager>
                 OnClickDice100Button();
                 break;
         }
+
     }
 
     private void OnClickDice3Button()

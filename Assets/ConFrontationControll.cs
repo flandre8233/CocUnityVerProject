@@ -42,6 +42,48 @@ public class ConFrontationControll : SingletonMonoBehavior<ConFrontationControll
         int OurSideVal = int.Parse(OurSideInputField.text);
         int OpposSideVal = int.Parse(OpposSideInputField.text);
 
+        int OurRandomResult = DiceMath.Dice100();
+        int OpposRandomResult = DiceMath.Dice100();
+
+        DiceMath.DiceLevelEnum OurJudge = DiceMath.JudgeDice(OurSideVal, OurRandomResult);
+        DiceMath.DiceLevelEnum OpposJudge = DiceMath.JudgeDice(OpposSideVal, OpposRandomResult);
+
+        if (OurJudge < OpposJudge)
+        {
+            ResultText.text = "Dice Result : = " + OurJudge + " " + OurRandomResult + " VS " + OpposJudge + " " + OpposRandomResult +""+ ", Passed !";
+            return;
+        }
+        else if (OurJudge > OpposJudge)
+        {
+            ResultText.text = "Dice Result : = " + OurJudge + " " + OurRandomResult + " VS " + OpposJudge + " " + OpposRandomResult  + ", Not Passed !";
+
+            return;
+        }
+        else
+        {
+            if (OurSideVal > OpposSideVal)
+            {
+                ResultText.text = "Dice Result : = Same DiceLevel, " + OurRandomResult + " VS " + OpposRandomResult + ", Passed !";
+                return;
+            }
+            else if (OurSideVal < OpposSideVal)
+            {
+                ResultText.text = "Dice Result : = Same DiceLevel, " + OurRandomResult + " VS " + OpposRandomResult  + ", Not Passed !";
+                return;
+            }
+            else
+            {
+                OutputResult();
+            }
+        }
+
+    }
+
+    public void OutputResult_6th()
+    {
+        int OurSideVal = int.Parse(OurSideInputField.text);
+        int OpposSideVal = int.Parse(OpposSideInputField.text);
+
         int PassVal = (((OurSideVal - OpposSideVal) * 5) + 50);
 
         if (PassVal >= 100)
@@ -52,7 +94,7 @@ public class ConFrontationControll : SingletonMonoBehavior<ConFrontationControll
         else if (PassVal <= 0)
         {
             ResultText.text = "100% fail pass, No need to roll dice";
-            return; 
+            return;
         }
 
         int randomDice = DiceMath.Dice100();
@@ -65,4 +107,6 @@ public class ConFrontationControll : SingletonMonoBehavior<ConFrontationControll
     }
 
 
+
 }
+
