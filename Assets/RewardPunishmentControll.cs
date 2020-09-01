@@ -10,7 +10,7 @@ public class RewardPunishmentControll : SingletonMonoBehavior<RewardPunishmentCo
 
     public int ExtraDiceTime {
         get {
-            return int.Parse(inputField.text);
+            return int.Parse(inputField.text == ""? "0" : inputField.text);
         }
     }
 
