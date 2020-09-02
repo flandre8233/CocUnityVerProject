@@ -19,6 +19,9 @@ public class CharCreateControll : SingletonMonoBehavior<CharCreateControll>
     [SerializeField]
     Vector2 ChooseBoxSpawnPoint;
 
+    [SerializeField]
+    GameObject[] Lines;
+
    public int StepCounter;
 
     private void Update()
@@ -99,93 +102,99 @@ public class CharCreateControll : SingletonMonoBehavior<CharCreateControll>
     void OnFirstCreateStep()
     {
         int RandomType = 1;
-        SpawnPropertyBox(CharData.CharPropertyEnum.STR, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y), false);
-        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y), false);
-        SpawnPropertyBox(CharData.CharPropertyEnum.CON, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y), false);
-        SpawnPropertyBox(CharData.CharPropertyEnum.APP, new Vector2(SpawnPoint.x + (300 * 3), SpawnPoint.y), false);
-        SpawnPropertyBox(CharData.CharPropertyEnum.POW, new Vector2(SpawnPoint.x + (300 * 4), SpawnPoint.y), false);
+        SpawnPropertyBox(CharData.CharPropertyEnum.STR, 0 + (.2f * 0), false , Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, 0 + (.2f * 1), false, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.CON, 0 + (.2f * 2),  false, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.APP, 0 + (.2f * 3),  false, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.POW, 0 + (.2f * 4),  false, Lines[0]);
 
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 0), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 1), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 2), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 3), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 4), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 5), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 6), ChooseBoxSpawnPoint.y));
+        SpawnChooseBox(RandomType, 0 + (.14f * 0) , Lines[1]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 1) , Lines[1]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 2), Lines[1]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 3), Lines[1]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 4), Lines[1]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 5), Lines[1]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 6), Lines[1]);
     }
 
     void OnSecCreateStep()
     {
         int RandomType = 2;
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.STR, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.CON, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.APP, new Vector2(SpawnPoint.x + (300 * 3), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.POW, new Vector2(SpawnPoint.x + (300 * 4), SpawnPoint.y), true);
+        
+        SpawnPropertyBox(CharData.CharPropertyEnum.STR, 0 + (.2f * 0), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, 0 + (.2f * 1), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.CON, 0 + (.2f * 2), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.APP, 0 + (.2f * 3), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.POW, 0 + (.2f * 4), true, Lines[0]);
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.INT, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 1)), false);
-        SpawnPropertyBox(CharData.CharPropertyEnum.SIZE, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y + (-150 * 1)), false);
-        SpawnPropertyBox(CharData.CharPropertyEnum.EDU, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y + (-150 * 1)), false);
-
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 0), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 1), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 2), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 3), ChooseBoxSpawnPoint.y));
+        SpawnPropertyBox(CharData.CharPropertyEnum.INT, 0 + (.2f * 0) , false, Lines[1]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.SIZE, 0 + (.2f * 1) , false, Lines[1]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.EDU, 0 + (.2f * 2) , false, Lines[1]);
+        
+        SpawnChooseBox(RandomType, 0 + (.14f * 0), Lines[2]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 1), Lines[2]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 2), Lines[2]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 3), Lines[2]);
     }
 
     void OnThirdCreateStep()
     {
         int RandomType = 1;
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.STR, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.CON, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.APP, new Vector2(SpawnPoint.x + (300 * 3), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.POW, new Vector2(SpawnPoint.x + (300 * 4), SpawnPoint.y), true);
+        SpawnPropertyBox(CharData.CharPropertyEnum.STR, 0 + (.2f * 0), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, 0 + (.2f * 1), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.CON, 0 + (.2f * 2), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.APP, 0 + (.2f * 3), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.POW, 0 + (.2f * 4), true, Lines[0]);
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.INT, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 1)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.SIZE, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y + (-150 * 1)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.EDU, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y + (-150 * 1)), true);
+        SpawnPropertyBox(CharData.CharPropertyEnum.INT, 0 + (.2f * 0), true, Lines[1]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.SIZE, 0 + (.2f * 1), true, Lines[1]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.EDU, 0 + (.2f * 2), true, Lines[1]);
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.LUCK, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 2) ) , false);
+        SpawnPropertyBox(CharData.CharPropertyEnum.LUCK, 0 + (.2f * 0), false, Lines[2]);
 
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 0), ChooseBoxSpawnPoint.y));
-        SpawnChooseBox(RandomType, new Vector2(ChooseBoxSpawnPoint.x + (175 * 1), ChooseBoxSpawnPoint.y));
+        SpawnChooseBox(RandomType, 0 + (.14f * 0), Lines[3]);
+        SpawnChooseBox(RandomType, 0 + (.14f * 0), Lines[3]);
     }
 
     void OnResultCreateStep()
     {
-        SpawnPropertyBox(CharData.CharPropertyEnum.STR, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.CON, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.APP, new Vector2(SpawnPoint.x + (300 * 3), SpawnPoint.y), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.POW, new Vector2(SpawnPoint.x + (300 * 4), SpawnPoint.y), true);
+        SpawnPropertyBox(CharData.CharPropertyEnum.STR, 0 + (.2f * 0), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.DEX, 0 + (.2f * 1), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.CON, 0 + (.2f * 2), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.APP, 0 + (.2f * 3), true, Lines[0]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.POW, 0 + (.2f * 4), true, Lines[0]);
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.INT, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 1)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.SIZE, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y + (-150 * 1)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.EDU, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y + (-150 * 1)), true);
+        SpawnPropertyBox(CharData.CharPropertyEnum.INT, 0 + (.2f * 0), true, Lines[1]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.SIZE, 0 + (.2f * 1), true, Lines[1]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.EDU, 0 + (.2f * 2), true, Lines[1]);
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.LUCK, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 2) ), true);
+        SpawnPropertyBox(CharData.CharPropertyEnum.LUCK, 0 + (.2f * 0), false, Lines[2]);
 
         charData.GenDerivedValuePropertyData();
 
-        SpawnPropertyBox(CharData.CharPropertyEnum.SAN, new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 3)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.MP, new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y + (-150 * 3)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.HP, new Vector2(SpawnPoint.x + (300 * 2), SpawnPoint.y + (-150 * 3)), true);
-        SpawnPropertyBox(CharData.CharPropertyEnum.MOV, new Vector2(SpawnPoint.x + (300 * 3), SpawnPoint.y + (-150 * 3)), true);
+        SpawnPropertyBox(CharData.CharPropertyEnum.SAN, 0 + (.2f * 0), true, Lines[3]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.MP, 0 + (.2f * 1), true, Lines[3]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.HP, 0 + (.2f * 2), true, Lines[3]);
+        SpawnPropertyBox(CharData.CharPropertyEnum.MOV, 0 + (.2f * 3), true, Lines[3]);
 
-        SpawnDBBox(new Vector2(SpawnPoint.x + (300 * 0), SpawnPoint.y + (-150 * 4)) );
-        SpawnBuildBox(new Vector2(SpawnPoint.x + (300 * 1), SpawnPoint.y + (-150 * 4)) );
+        SpawnDBBox(0 + (.2f * 0), Lines[4]);
+        SpawnBuildBox(0 + (.2f * 1), Lines[4]);
 
     }
 
 
-    PropertyBoxControll SpawnPropertyBox(CharData.CharPropertyEnum Type , Vector2 SpawnPoint , bool ReadOnly)
+    PropertyBoxControll SpawnPropertyBox(CharData.CharPropertyEnum Type , float AnchorsX , bool ReadOnly , GameObject Line)
     {
         GameObject SpawnObj = Instantiate(PropertyBoxPrefab);
-        SpawnObj.GetComponent<RectTransform>().parent = CharCreateCanvasControll.instance.transform;
-        SpawnObj.GetComponent<RectTransform>().anchoredPosition = SpawnPoint;
+        SpawnObj.GetComponent<RectTransform>().parent = Line.transform;
+        SpawnObj.GetComponent<RectTransform>().anchorMin = new Vector2(AnchorsX,0);
+        SpawnObj.GetComponent<RectTransform>().anchorMax = new Vector2(AnchorsX + 0.2f,1) ;
+        SpawnObj.GetComponent<RectTransform>().anchoredPosition = new Vector2();
+        SpawnObj.GetComponent<RectTransform>().sizeDelta = new Vector2();
+
+        SpawnObj.transform.localScale = new Vector3(1, 1, 1);
 
         SpawnObj.GetComponent<PropertyBoxControll>().Type = Type;
 
@@ -200,11 +209,15 @@ public class CharCreateControll : SingletonMonoBehavior<CharCreateControll>
         return SpawnObj.GetComponent<PropertyBoxControll>();
     }
 
-    PropertyBoxControll SpawnDBBox(Vector2 SpawnPoint)
+    PropertyBoxControll SpawnDBBox( float AnchorsX, GameObject Line)
     {
         GameObject SpawnObj = Instantiate(PropertyBoxPrefab);
-        SpawnObj.GetComponent<RectTransform>().parent = CharCreateCanvasControll.instance.transform;
-        SpawnObj.GetComponent<RectTransform>().anchoredPosition = SpawnPoint;
+        SpawnObj.GetComponent<RectTransform>().parent = Line.transform;
+        SpawnObj.GetComponent<RectTransform>().anchorMin = new Vector2(AnchorsX, 0);
+        SpawnObj.GetComponent<RectTransform>().anchorMax = new Vector2(AnchorsX + 0.2f, 1);
+        SpawnObj.GetComponent<RectTransform>().anchoredPosition = new Vector2();
+        SpawnObj.GetComponent<RectTransform>().sizeDelta = new Vector2();
+        SpawnObj.transform.localScale = new Vector3(1, 1, 1);
 
 
         SpawnObj.GetComponent<PropertyBoxControll>().value = charData.DamageBouns;
@@ -215,11 +228,15 @@ public class CharCreateControll : SingletonMonoBehavior<CharCreateControll>
         propertyBoxControlls.Add(SpawnObj.GetComponent<PropertyBoxControll>());
         return SpawnObj.GetComponent<PropertyBoxControll>();
     }
-    PropertyBoxControll SpawnBuildBox(Vector2 SpawnPoint)
+    PropertyBoxControll SpawnBuildBox( float AnchorsX, GameObject Line)
     {
         GameObject SpawnObj = Instantiate(PropertyBoxPrefab);
-        SpawnObj.GetComponent<RectTransform>().parent = CharCreateCanvasControll.instance.transform;
-        SpawnObj.GetComponent<RectTransform>().anchoredPosition = SpawnPoint;
+        SpawnObj.GetComponent<RectTransform>().parent = Line.transform;
+        SpawnObj.GetComponent<RectTransform>().anchorMin = new Vector2(AnchorsX, 0);
+        SpawnObj.GetComponent<RectTransform>().anchorMax = new Vector2(AnchorsX + 0.2f, 1);
+        SpawnObj.GetComponent<RectTransform>().anchoredPosition = new Vector2();
+        SpawnObj.GetComponent<RectTransform>().sizeDelta = new Vector2();
+        SpawnObj.transform.localScale = new Vector3(1, 1, 1);
 
 
         SpawnObj.GetComponent<PropertyBoxControll>().value = charData.Build;
@@ -231,11 +248,16 @@ public class CharCreateControll : SingletonMonoBehavior<CharCreateControll>
         return SpawnObj.GetComponent<PropertyBoxControll>();
     }
 
-    ValRandomBase SpawnChooseBox(int RandomType, Vector2 SpawnPoint)
+    ValRandomBase SpawnChooseBox(int RandomType, float AnchorsX, GameObject Line)
     {
         GameObject SpawnObj = Instantiate(ChooseBoxPrefab);
-        SpawnObj.GetComponent<RectTransform>().parent = CharCreateCanvasControll.instance.transform;
-        SpawnObj.GetComponent<RectTransform>().anchoredPosition = SpawnPoint;
+        SpawnObj.GetComponent<RectTransform>().parent = Line.transform;
+        SpawnObj.GetComponent<RectTransform>().anchorMin = new Vector2(AnchorsX, 0);
+        SpawnObj.GetComponent<RectTransform>().anchorMax = new Vector2(AnchorsX + 0.12f, 1);
+        SpawnObj.GetComponent<RectTransform>().anchoredPosition = new Vector2();
+        SpawnObj.GetComponent<RectTransform>().sizeDelta = new Vector2();
+
+        SpawnObj.transform.localScale = new Vector3(1,1,1);
 
         SpawnObj.GetComponent<ValRandomBase>().RandomType = RandomType;
 

@@ -20,6 +20,7 @@ public class ValRandomBase : MonoBehaviour
         SpawnObj = Instantiate(NumberPrefab);
         SpawnObj.GetComponent<ValControll>().motherBase = this;
         SpawnObj.GetComponent<ValControll>().RandomType = RandomType;
+
         SpawnObj.GetComponent<DragDrop>().ResetPos();
     }
 

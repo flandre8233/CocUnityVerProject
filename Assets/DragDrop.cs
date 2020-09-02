@@ -62,5 +62,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         GetComponent<RectTransform>().parent = GetComponent<ValControll>().motherBase.transform;
         GetComponent<RectTransform>().anchoredPosition = new Vector2();
+        GetComponent<RectTransform>().sizeDelta = new Vector2();
+        transform.localScale = new Vector3(1, 1, 1);
+
     }
 }
