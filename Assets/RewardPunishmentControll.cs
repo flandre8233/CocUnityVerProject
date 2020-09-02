@@ -59,17 +59,13 @@ public class RewardPunishmentControll : SingletonMonoBehavior<RewardPunishmentCo
             RandomManager.instance.OutPutResult.text += Dices[i] + "  ";
         }
     
-        Dices.Sort();
         if (Dices.Count > 2 && Dices.Where(x => x == 0).ToList().Count >= 2)
         {
-            for (int i = 1; i < Dices.Count; i++)
-            {
-                if (Dices[i] == 0)
-                {
-                    Dices.RemoveAt(i);
-                }
-            }
+            Dices.RemoveAll(x => x == 0);
+            Dices.Add(0);
         }
+        Dices.Sort();
+
 
         RandomManager.instance.OutPutResult.text += " Best Result : ";
         RandomManager.instance.OutPutResult.text += Dices[0] + "  " + Dices[1] + "  ";

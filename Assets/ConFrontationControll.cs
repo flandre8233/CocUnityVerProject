@@ -63,17 +63,12 @@ public class ConFrontationControll : SingletonMonoBehavior<ConFrontationControll
             Reason += Dices[i] + " ";
         }
 
-        Dices.Sort();
         if (Dices.Count > 2 && Dices.Where(x => x == 0).ToList().Count >= 2)
         {
-            for (int i = 1; i < Dices.Count; i++)
-            {
-                if (Dices[i] == 0)
-                {
-                    Dices.RemoveAt(i);
-                }
-            }
+            Dices.RemoveAll(x => x == 0);
+            Dices.Add(0);
         }
+        Dices.Sort();
 
         return DiceMath.Dice100Counting(Dices[0], Dices[1]);
     }
