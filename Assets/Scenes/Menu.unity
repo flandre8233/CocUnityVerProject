@@ -362,7 +362,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Gibgib's COC system B1.1_\u6BD2\u5165\u308A\u30B9\u30FC\u30D7\n"
+  m_Text: "Gibgib's COC system B1.2_\u5E38\u95C7\u306E\u7BB1\n"
 --- !u!222 &405585361
 CanvasRenderer:
   m_ObjectHideFlags: 0
